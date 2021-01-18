@@ -37,14 +37,16 @@ void Overlays::CreditsOverlay() {
 	Gui::font.print(Lang::get("CURRENT_VERSION") + "v0.1.0", 0, 175, true, 2, Alignment::center);
 
 	Gui::TopBG.draw(0, 0, false, 3, true);
-	Gui::font.print("devkitPro", 0, 20, false, 2, Alignment::center);
-	Gui::font.print(Lang::get("DEVKITPRO"), 0, 35, false, 2, Alignment::center);
+	Gui::font.print("devkitPro", 0, 30, false, 2, Alignment::center);
+	Gui::font.print(Lang::get("DEVKITPRO"), 0, 45, false, 2, Alignment::center);
 
-	Gui::font.print("Universal-Team", 0, 65, false, 2, Alignment::center);
-	Gui::font.print(Lang::get("UNIVERSAL_CORE"), 0, 80, false, 2, Alignment::center);
+	Gui::font.print("SuperSaiyajinStackZ", 0, 75, false, 2, Alignment::center);
+	Gui::font.print(Lang::get("DEVELOPING_APP"), 0, 90, false, 2, Alignment::center);
 
-	Gui::font.print("SuperSaiyajinStackZ", 0, 110, false, 2, Alignment::center);
-	Gui::font.print(Lang::get("DEVELOPING_APP"), 0, 125, false, 2, Alignment::center);
+	Gui::font.print("Universal-Team", 0, 120, false, 2, Alignment::center);
+	Gui::font.print(Lang::get("UNIVERSAL_CORE"), 0, 145, false, 2, Alignment::center);
+
+
 	Gui::font.update();
 
 	while(!doOut) {

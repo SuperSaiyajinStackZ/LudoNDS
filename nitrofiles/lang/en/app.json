@@ -7,7 +7,7 @@
 	"CURRENT_VERSION": "Current Version: ",
 	"DEV_BY": "LudoNDS got developed by\nSuperSaiyajinStackZ",
 	"DEVELOPING_APP": "- For developing this application.",
-	"DEVKITPRO": "- For devkitARM, Libctru, Libnds and Libfat.",
+	"DEVKITPRO": "- For devkitARM, Libnds and Libfat.",
 	"DICE_ROLLS": "dice rolls",
 	"DICE_ROLLS_ACTIVE": "Active dice rolls: ",
 	"ENABLE_COMPUTER": "Enable Computer",
@@ -34,6 +34,6 @@
 	"SELECT_FIGURE": "Select the figure you like to set.",
 	"SELECT_LANG": "Select a Language.",
 	"STOP_DICE": "Press A to stop the dice.",
-	"UNIVERSAL_CORE": "- For Universal-Core.",
+	"UNIVERSAL_CORE": "- For Universal-Core and bmp2ds.",
 	"YES": "Yes"
 }
