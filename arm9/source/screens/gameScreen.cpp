@@ -43,6 +43,7 @@ void GameScreen::PlaceFigures() {
 
 					Gui::Chips[(i * 4) + i2].position(pos.first, pos.second);
 					Gui::Chips[(i * 4) + i2].priority(1);
+
 				} else {
 					Gui::Chips[(i * 4) + i2].visibility(false); // Verstecke Chip, weil nicht genügend Figuren.
 				}
@@ -66,9 +67,7 @@ void GameScreen::ToggleFigures(bool show) {
 	for(uint8_t i = 0; i < 4; i++) {
 		if (i < this->currentGame->GetPlayerAmount()) {
 			for (uint8_t i2 = 0; i2 < 4; i2++) {
-				if (i2 < this->currentGame->GetFigurAmount()) {
-					Gui::Chips[(i * 4) + i2].visibility(show);
-				}
+				if (i2 < this->currentGame->GetFigurAmount()) Gui::Chips[(i * 4) + i2].visibility(show);
 			}
 		}
 	}
@@ -111,7 +110,6 @@ void GameScreen::Draw(void) const {
 
 	Gui::font.clear();
 	Gui::TopBG.draw(0, 0, true, 3, true);
-	Gui::BottomBG.draw(0, 0, false, 3, true);
 
 	Gui::font.print(Lang::get("GAME_PAUSED"), 0, 0, true, 2, Alignment::center);
 	Gui::font.print(Lang::get("PLAYER_AMOUNT") + ": " + std::to_string(this->currentGame->GetPlayerAmount()), 0, 30, true, 2, Alignment::center);
@@ -120,7 +118,9 @@ void GameScreen::Draw(void) const {
 	Gui::font.print(Lang::get("COMPUTER_ENABLED") + (this->currentGame->GetAI() ? Lang::get("YES") : Lang::get("NO")), 0, 90, true, 2, Alignment::center);
 	Gui::font.print(Lang::get("DICE_ROLLS") + ": " + std::to_string(this->currentGame->GetDiceRolls()), 0, 110, true, 2, Alignment::center);
 	Gui::font.print(Lang::get("DICE_ROLLS_ACTIVE") + std::to_string(this->currentGame->GetAVLDiceRolls()), 0, 130, true, 2, Alignment::center);
+	Gui::font.print(Lang::get("SELECT_EXIT"), 0, 175, true, 2, Alignment::center);
 
+	Gui::BottomBG.draw(0, 0, false, 3, true);
 
 	for (uint8_t i = 0; i < 5; i++) {
 		Gui::Button.draw(this->SubPos[i].x, this->SubPos[i].y, false, 3, true);
@@ -178,6 +178,15 @@ void GameScreen::SubLogic(uint32_t hDown, uint32_t hHeld, touchPosition touch) {
 		this->ToggleFigures(true);
 		Screen::doDraw();
 		this->UpdateText();
+	}
+
+	if (hDown & KEY_SELECT) {
+		if (Msg::promptMsg(Lang::get("EXIT_GAME"), this->currentGame->GetCurrentPlayer())) exiting = true;
+		else {
+			for (uint8_t i = 0; i < 2; i++) Gui::ButtonChip[i].visibility(true);
+			this->UpdateSub();
+			Screen::doDraw();
+		}
 	}
 
 	if (hDown & KEY_DOWN) {
@@ -491,12 +500,7 @@ void GameScreen::PreviousFigur() {
 		if (GameHelper::CanMove(this->currentGame, this->currentGame->GetCurrentPlayer(), cFigur, this->currentGame->GetErgebnis())) {
 			this->currentGame->SetSelectedFigur(cFigur);
 
-			const std::pair<int, int> pos = this->GetPosition(
-				this->currentGame->GetCurrentPlayer(),
-				this->currentGame->GetSelectedFigur(),
-				this->currentGame->GetPosition(this->currentGame->GetCurrentPlayer(), this->currentGame->GetSelectedFigur())
-			);
-
+			const std::pair<int, int> pos = this->GetPosition(this->currentGame->GetCurrentPlayer(), this->currentGame->GetSelectedFigur(), this->currentGame->GetPosition(this->currentGame->GetCurrentPlayer(), this->currentGame->GetSelectedFigur()));
 			if (pos.first != -1) {
 				Gui::ChipSelector.position(pos.first, pos.second);
 				Gui::ChipSelector.update();

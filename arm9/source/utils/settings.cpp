@@ -33,7 +33,6 @@
 void Settings::Initialize() {
 	FILE *file = fopen(CONF_PATH, "w");
 	this->SetInt("Language", 1);
-	this->SetInt("ShowRules", 1);
 
 	const std::string dump = this->config.dump(1, '\t');
 	fwrite(dump.c_str(), 1, this->config.dump(1, '\t').size(), file);
@@ -52,10 +51,6 @@ Settings::Settings() {
 	if (!this->config.contains("Language")) this->Language(1); // 1 ist Englisch, was die Standard Sprache ist.
 	else this->Language(this->GetInt("Language"));
 
-	/* Regeln ansehen. */
-	if (!this->config.contains("ShowRules")) this->Rules(1); // 1 ist ja, also zeige Regeln an.
-	else this->Rules(this->GetInt("ShowRules"));
-
 	/* Figur Animation. */
 	if (!this->config.contains("FigureAnim")) this->Animate(1); // 1 ist ja, also animiere die Figur.
 	else this->Animate(this->GetInt("FigureAnim"));
@@ -68,7 +63,6 @@ void Settings::Save() {
 	if (this->changesMade) {
 		FILE *file = fopen(CONF_PATH, "w");
 		this->SetInt("Language", this->Language());
-		this->SetInt("ShowRules", this->Rules());
 		this->SetInt("FigureAnim", this->Animate());
 
 		/* Scrhreibe Änderungen in die Konfigurations-Datei. */
