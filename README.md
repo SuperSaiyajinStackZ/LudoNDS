@@ -25,6 +25,9 @@ Hier findest du ein paar Screenshots zum aktuellen Fortschritt.
 ### Spiel Screen
 ![](https://github.com/SuperSaiyajinStackZ/LudoNDS/blob/main/screenshots/gameScreen1_en.png) ![](https://github.com/SuperSaiyajinStackZ/LudoNDS/blob/main/screenshots/gameScreen2_en.png) ![](https://github.com/SuperSaiyajinStackZ/LudoNDS/blob/main/screenshots/subMenu_en.png)
 
+### Splash Overlay
+![](https://github.com/SuperSaiyajinStackZ/LudoNDS/blob/main/screenshots/splash.png)
+
 ### Sprachauswahl Overlay
 ![](https://github.com/SuperSaiyajinStackZ/LudoNDS/blob/main/screenshots/languageOverlay_en.png)
 

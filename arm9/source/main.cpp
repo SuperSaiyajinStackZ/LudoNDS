@@ -92,9 +92,10 @@ int main(int argc, char **argv) {
 		}
 	}
 
-	Gui::Init();
 	konfiguration = std::make_unique<Settings>();
 	Lang::load(konfiguration->Language());
+	Gui::Init();
+	Overlays::SplashOverlay();
 	Screen::set(std::make_unique<GameScreen>());
 	Screen::doDraw();
 	CoreHelper::GenerateSeed();

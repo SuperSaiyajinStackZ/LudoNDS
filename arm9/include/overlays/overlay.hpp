@@ -42,6 +42,7 @@ namespace Overlays {
 	GameData PrepareGame(bool allowCancel = false);
 	void CreditsOverlay();
 	void LanguageOverlay();
+	void SplashOverlay();
 };
 
 #endif
